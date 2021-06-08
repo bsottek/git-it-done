@@ -32,6 +32,11 @@ var getUserRepos = function(user) {
 };
 
 var displayRepos = function(repos, searchTerm) {
+    if (repos.length === 0){
+        repoContainerEl.textContent = "No repositores found.";
+        return
+    }
+
     // clear old content
     repoContainerEl.textContent = "";
     repoSearchTerm.textContent = searchTerm;
