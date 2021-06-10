@@ -6,8 +6,13 @@ var repo = document.location.search.split("=")[1];
 var getRepoName = function () {
     var queryString = document.location.search;
     var repoName = queryString.split("=")[1];
+
+    if(repoName) {
     getRepoIssues(repoName);
     repoNameEl.textContent = repoName;
+    } else {
+        document.location.replace("./index.html");
+    }
 }
 
 var getRepoIssues = function(repo) {
@@ -22,7 +27,7 @@ var getRepoIssues = function(repo) {
                 }
             })
         } else{
-            alert("There was a problem with your request!")
+            document.location.replace("./index.html");
         }
     });
 }
@@ -58,7 +63,6 @@ var displayIssues = function(issues) {
 
         // append to container
         issueEl.appendChild(typeEl);
-        console.log(issueEl);
         issueContainerEl.appendChild(issueEl);
     }
 }
